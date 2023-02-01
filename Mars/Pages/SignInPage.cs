@@ -2,9 +2,9 @@
 
 namespace Mars.Pages
 {
-    public class SignInPage
+    public class SignInPage 
     {
-        public void SigninActions(IWebDriver driver)
+        public void SigninActions(IWebDriver driver) 
         {
             //open browser
             Thread.Sleep(1000);

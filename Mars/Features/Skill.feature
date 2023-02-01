@@ -10,4 +10,13 @@ Scenario Outline: Add a new Skill
 	Examples: 
 	| skill   | skilllevel |
 	| C#	  | Beginner|
+
+Scenario: Update exiting skill
+Given I loggedin into mars portal
+And  I updated exiting skill
+Then I should be able to see updated skill record created
+Scenario: Delete skill record
+Given I loggedin into mars portal
+And  I delete exiting record
+
 	

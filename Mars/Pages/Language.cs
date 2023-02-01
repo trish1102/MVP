@@ -2,7 +2,7 @@
 
 namespace Mars.Pages
 {
-    public class Language
+    public class Language: Comondriver
     {
         public void AddLanguage(IWebDriver driver, string language, string languagelevel)
         {
