@@ -1,15 +1,15 @@
 
 
 
+using System;
 
-
-
-namespace Mars.StepDefinations
+namespace Mars.StepDefinations 
 {
     [Binding]
-    public class MarsStepDefinitions
+    public class MarsStepDefinitions : Comondriver
     {
-        IWebDriver driver = new ChromeDriver();
+        
+        
         SignInPage signInpageObj = new SignInPage();
         ProfilePage profilepageObj = new ProfilePage();
         Language languageObj = new Language();
@@ -19,7 +19,8 @@ namespace Mars.StepDefinations
         public void GivenILoginIntoMarsPortalUsingValidCredentials()
         {
             //signin page objection intialition
-            
+            driver = new ChromeDriver();
+
             signInpageObj.SigninActions(driver);
 
         }
@@ -37,7 +38,8 @@ namespace Mars.StepDefinations
                 [Given(@"I loggedin into mars portal")]
         public void GivenILoggedinIntoMarsPortal()
         {
-           
+            
+             driver = new ChromeDriver();
             signInpageObj.SigninActions(driver);
         }
 
@@ -68,6 +70,25 @@ namespace Mars.StepDefinations
             String skillName = skillObj.GetSkill(driver);
             Assert.That(skillName == "C#", "Test Failed");
         }
+        [Given(@"I updated exiting skill")]
+        public void GivenIUpdatedExitingSkill()
+        {
+            profilepageObj.ClickonSkill(driver);
+            skillObj.UpdateSkill(driver);
+        }
+        [Then(@"I should be able to see updated skill record created")]
+        public void ThenIShouldBeAbleToSeeUpdatedSkillRecordCreated()
+        {
+            profilepageObj.ClickonSkill(driver);
+            String updatedskillName = skillObj.GetUpdatedSkill(driver);
+            Assert.That(updatedskillName == "Selenium", "Test Failed");
+        }
+        [Given(@"I delete exiting record")]
+        public void GivenIDeleteExitingRecord()
+        {
+            profilepageObj.ClickonSkill(driver);
+            skillObj.DeleteSkill(driver);
+        }
         [Given(@"I enter education details '([^']*)', '([^']*)','([^']*)','([^']*)' and '([^']*)'")]
         public void GivenIEnterEducationDetailsAnd(string university, string country, string title, string degree, string year)
         {
@@ -89,6 +110,8 @@ namespace Mars.StepDefinations
             Assert.That(degreeName == "Computer", "Test Failed");
             Assert.That(yearName == "2012", "Test Failed");
         }
+        
+
 
 
 

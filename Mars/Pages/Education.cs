@@ -2,7 +2,7 @@
 
 namespace Mars.Pages
 {
-    public class Education
+    public class Education: Comondriver
     {
         public void AddEducation(IWebDriver driver, String university, String country, String title, String degree, String year)
         {
